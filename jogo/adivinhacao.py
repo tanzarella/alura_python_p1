@@ -6,10 +6,15 @@ numero_secreto = 42
 total_de_tentativas = 3
 tentativa = 1
 
-while tentativa <= total_de_tentativas:
+for tentativa in range(1, total_de_tentativas + 1):
     print("Tentativa {} de {}".format(tentativa,total_de_tentativas))
-    chute = int(input("Digite o seu número: "))
-    print("Você digitou: ", chute)
+    chute = int(input("Digite um número entre 1 e 100: "))
+
+    if chute < 1 or chute > 100:
+        print("Você digitou {}, você deve digitar um número entre 1 e 100".format(chute))
+        continue
+    else:
+        print("Você digitou: ", chute)
     
     if numero_secreto > chute:
         print("Você errou! O seu chute foi menor que o número secreto.")
@@ -17,8 +22,6 @@ while tentativa <= total_de_tentativas:
         print("Você errou! O seu chute foi maior que o número secreto.")
     else:
         print("Você acertou!")
-        tentativa = total_de_tentativas
-
-    tentativa += 1
+        break
     
 print("Fim do jogo")
